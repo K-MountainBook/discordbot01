@@ -9,7 +9,7 @@ target/
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
@@ -30,3 +30,6 @@ build/
 ### VS Code ###
 .vscode/
 /bin/
+
+.gitignore
+.project
