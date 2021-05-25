@@ -10,11 +10,17 @@ import javax.security.auth.login.LoginException;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+/**
+ * HTTPSプロトコルだとSteamがブラウザで開かれるので直接Steamアプリに飛ぶようにURLを変換して自動的にDiscordに投稿するbot<br>
+ * 基本の設定は「discord bot」でぐぐれ
+ *
+ * @author k.yamamoto
+ *
+ */
 public class SteamURLConverter extends ListenerAdapter {
 
 	private static JDA jda;
@@ -35,7 +41,7 @@ public class SteamURLConverter extends ListenerAdapter {
 			TOKEN = properties.getProperty("token");
 
 			// BOTのステータスを設定
-			jda = JDABuilder.createDefault(TOKEN).setActivity(Activity.playing("ボット実験中")).build();
+			jda = JDABuilder.createDefault(TOKEN).build();
 
 			// BOTにイベントリスナを登録
 			jda = JDABuilder.createDefault(TOKEN).addEventListeners(new SteamURLConverter()).build();
@@ -57,14 +63,14 @@ public class SteamURLConverter extends ListenerAdapter {
 	 * Discordに投稿されたメッセージに反応する。
 	 * その際SteamのURLが含まれていた場合、Steamアプリで直接開くURLに変換して同一チャンネルに投稿する。
 	 *
-	 * @author keita.y
+	 * @author k.yamamoto
 	 *
 	 * @param event MessageReceivedEvent
 	 */
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 
-		String ragex = "https://.+steampowered.com.+[1-9]{1,7}/";
+		String ragex = "https://.+steampowered.com.+[0-9]{1,8}.*/";
 		Pattern p = Pattern.compile(ragex);
 		// 投稿されたメッセージの内容だけを抽出
 		String msgContentRaw = event.getMessage().getContentRaw();
