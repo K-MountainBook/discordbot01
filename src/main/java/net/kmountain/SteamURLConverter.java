@@ -1,6 +1,8 @@
 package net.kmountain;
 
-import java.util.ResourceBundle;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,10 +21,18 @@ public class SteamURLConverter extends ListenerAdapter {
 	private static String TOKEN; // 取得したBotのトークン
 
 	public static void main(String args[]) throws LoginException {
+		extracted();
+
+	}
+
+	private static void extracted() throws LoginException {
 		try {
 			// 設定ファイルからTOKENを取得(resourceフォルダ内のbot.propertiesから読み込み)
-			ResourceBundle rb = ResourceBundle.getBundle("bot");
-			TOKEN = rb.getString("token");
+
+			Properties properties = new Properties();
+			FileInputStream fi = new FileInputStream("bot.properties");
+			properties.load(fi);
+			TOKEN = properties.getProperty("token");
 
 			// BOTのステータスを設定
 			jda = JDABuilder.createDefault(TOKEN).setActivity(Activity.playing("ボット実験中")).build();
@@ -36,8 +46,10 @@ public class SteamURLConverter extends ListenerAdapter {
 		} catch (InterruptedException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
-
 	}
 
 	/**
