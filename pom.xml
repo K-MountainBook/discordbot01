@@ -1,63 +1,44 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>jp.deile</groupId>
 	<artifactId>discordbot01</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>DiscordMessageURLConvertOpenSteamURL</name>
-	<description>test</description>
+	<!-- <description>test</description> -->
+
+	<url>http://maven.apache.org</url>
 
 
 	<repositories>
 		<repository>
+			<id>dv8tion</id>
+			<name>m2-dv8tion</name>
+			<url>https://m2.dv8tion.net/releases</url>
+		</repository>
+		<repository>
 			<id>central</id>
-			<url>https://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
+			<name>bintray</name>
+			<url>http://jcenter.bintray.com</url>
 		</repository>
-		<repository>
-			<id>Sonatype</id>
-			<url>https://oss.sonatype.org/content/repositories/releases/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-		<repository>
-			<id>JCenter</id>
-			<url>https://jcenter.bintray.com/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-
 	</repositories>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
 		<dependency>
 			<groupId>net.dv8tion</groupId>
 			<artifactId>JDA</artifactId>
-			<version>1.2.2_139</version>
+			<version>4.2.1_253</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.jagrosh/JDA-Utilities -->
+		<!-- コマンド処理用のライブラリ（必須） -->
 		<dependency>
 			<groupId>com.jagrosh</groupId>
-			<artifactId>JDA-Utilities</artifactId>
-			<version>1.7</version>
+			<artifactId>jda-utilities</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+			<type>pom</type>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.tritonus/tritonus-dsp -->
-		<dependency>
-			<groupId>org.tritonus</groupId>
-			<artifactId>tritonus-dsp</artifactId>
-			<version>0.3.6</version>
-		</dependency>
-
-
 	</dependencies>
 </project>
 
