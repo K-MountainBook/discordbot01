@@ -1,4 +1,4 @@
-package net.deile;
+package net.kmountain;
 
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;

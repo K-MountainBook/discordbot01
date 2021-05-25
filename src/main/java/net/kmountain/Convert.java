@@ -1,4 +1,4 @@
-package net.deile;
+package net.kmountain;
 
 /**
  * httpsで始まるURLをSteamアプリでワンクリックで開けるようにコンバートする。
